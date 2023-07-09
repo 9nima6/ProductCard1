@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Product Card UI Design</title>
+
+    <!-- Vendor Script -->
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous"
+    ></script>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="imgBx">
+        <img
+          src="./images/black.png"
+          alt="Nike Jordan Proto-Lyte Image"
+        />
+        <button class="more">See More</button>
+      </div>
+      <div class="details">
+        <div class="content">
+          <h2>
+            Jordan Proto-Lyte <br />
+            <span>Running Collection</span>
+          </h2>
+          <p>
+            Jordan Proto-Lyte<br> با پوشش نرم فوم و پارچه بافته شده سبک وزن در قسمت رویه، برای راحتی در تمام طول روز ساخته شده است. قابلیت تنفس سبک: پارچه بافته شده سبک وزن با چرم واقعی یا مصنوعی پشتیبانی قابل تنفس را فراهم می کند.<br> آسایش بالشتکی: زیره میانی فوم تمام قد باعث ایجاد بالشتک بسیار سبک و شیک می شود. کشش ایمن: زیره بیرونی اغراق‌آمیز با طرح استخوان شاهی، کشش را روی سطوح مختلف ارائه می‌کند.
+          </p>
+          <p class="product-colors">
+            Available Colors:
+            <span
+              class="black active"
+              data-color-primary="#000"
+              data-color-sec="#212121"
+              data-pic="./images/black.png"
+            ></span>
+            <span
+              class="red"
+              data-color-primary="#7E021C"
+              data-color-sec="#bd072d"
+              data-pic="./images/red.png"
+            ></span>
+            <span
+              class="orange"
+              data-color-primary="#CE5B39"
+              data-color-sec="#F18557"
+              data-pic="./images/orange.png"
+            ></span>
+          </p>
+          <h3>Rs.&nbsp; 7,800,000</h3>
+          <button>Buy Now</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Change The Picture and Associated Element Color when Color Options Are Clicked.
+      $(".product-colors span").click(function () {
+        $(".product-colors span").removeClass("active");
+        $(this).addClass("active");
+        $(".active").css("border-color", $(this).attr("data-color-sec"));
+        $("body").css("background", $(this).attr("data-color-primary"));
+        $(".content h2").css("color", $(this).attr("data-color-sec"));
+        $(".content h3").css("color", $(this).attr("data-color-sec"));
+        $(".container .imgBx").css(
+          "background",
+          $(this).attr("data-color-sec")
+        );
+        $(".container .details button").css(
+          "background",
+          $(this).attr("data-color-sec")
+        );
+        $(".imgBx img").attr("src", $(this).attr("data-pic"));
+      });
+
+      let btn=document.querySelector("button.more")
+      let details=document.querySelector("div.details")
+      let content=document.querySelector("div.content")
+      btn.addEventListener("click",function(){
+        details.classList.toggle("show")
+        setTimeout(function(){
+          content.classList.toggle("scale")
+        }, 100);      
+      })
+    </script>
+  </body>
+</html>
